@@ -5,6 +5,10 @@ from django.http import HttpResponseRedirect
 from django.core import serializers
 import json
 
+from predict import models
+from predict import forms
+from predict.model_predict import predict_data
+
 def login_user(request):
     context = {}
     email = password = ""
@@ -30,14 +34,11 @@ def index(request):
     return render(request, "predict/index.html")
 
 def app(request):
-    return render(request, "predict/index.html")
+    context = {"datafiles": models.DataFile.objects.all()}
+    return render(request, "predict/app.html", context)
 
 def graph(request):
 	return render(request, "predict/graph.html")
-
-from predict import models
-from predict import forms
-from predict.model_predict import predict_data
 
 def add_xlsx(request):
     form = forms.FileForm(request.POST or None, request.FILES or None)

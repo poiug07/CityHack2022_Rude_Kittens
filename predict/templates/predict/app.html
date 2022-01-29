@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+
+    {% include "partials/navbar.html" %}
+
+    <div class="container">
+        <h5 class="mt-3 text-start" style="margin-left: 0.7rem;">Example Projects</h5>
+        <hr>
+
+        <!-- Cards -->
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for o in datafiles %}
+                <div class="col">
+                    <div class="card" style="width: 100%">
+                        <img src="/static/card-bg.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ o.name }}</h5>
+                            <p class="card-text">{{ o.description }}</p>
+                            <a href="/graph/{{o.id}}" class="btn btn-primary">Open Project</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock content %}
