@@ -63,3 +63,9 @@ def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
 	return JsonResponse(json.loads(d))
 
+def download_xlsx(request, key_id):
+    d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
+    print(d)
+    return HttpResponse("xlsx")
+
+
