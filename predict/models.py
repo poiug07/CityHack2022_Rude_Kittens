@@ -11,6 +11,7 @@ class DataFile(models.Model):
     def __str__(self):
         return self.name + ": " + str(self.filepath)
 
-class DataPredictions(models.Model):
+class DataPrediction(models.Model):
     datafile_id = models.ForeignKey(DataFile, on_delete=models.CASCADE)
     predictionsJSON = models.TextField()
+
