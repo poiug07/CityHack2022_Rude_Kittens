@@ -2,8 +2,16 @@ from django.contrib import admin
 from predict import models
 
 @admin.register(models.DataFile)
-class ThemeAdmin(admin.ModelAdmin):
+class DataFileAdmin(admin.ModelAdmin):
     search_fields = ("name",)
 
-# Register your models here.
-admin.site.register(models.DataPrediction)
+@admin.register(models.DataPrediction)
+class DataPredictionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": ("datafile_id", "predictionsJSON"),
+            },
+        ),
+    )

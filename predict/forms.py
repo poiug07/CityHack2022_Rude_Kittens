@@ -10,6 +10,14 @@ class FileForm(forms.ModelForm):
             "aria-describedby": "addon-wrapping"
         }
     ))
+    description = forms.CharField(widget=forms.TextInput(
+        attrs={
+            "class":"form-control",
+            "placeholder": "Some project description...",
+            "aria-label": "descriptio",
+            "aria-describedby": "addon-wrapping"
+        }
+    ))
     filepath = forms.FileField(widget=forms.FileInput(
         attrs={
             "class": "form-control",
@@ -18,4 +26,4 @@ class FileForm(forms.ModelForm):
 
     class Meta:
         model = DataFile
-        fields = ["name", "filepath"]
+        fields = ["name", "description", "filepath"]
