@@ -54,8 +54,11 @@ def app(request):
     context["datafiles"] = models.DataFile.objects.all()
     return render(request, "predict/app.html", context)
 
+def loading(request, id):
+    return render(request, "predict/loading.html", {"id": id})
+
 @login_required(login_url="/login")
-def graph(request):
+def graph(request, datafile_id):
 	return render(request, "predict/graph.html")
 
 def get_data(request, key_id):
