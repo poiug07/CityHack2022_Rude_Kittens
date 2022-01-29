@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class DataFile(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    name = modles.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     filepath = models.FileField(upload_to='files/', null=True, verbose_name="")
 
     def __str__(self):
