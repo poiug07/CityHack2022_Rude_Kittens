@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="px-4 py-5 my-5 text-center">
+            <img class="mx-auto d-block" height="300" src="/static/ml.gif">
+            <h1 class="display-5 fw-bold">Wait please. Our AI is processing your file.</h1>
+        </div>
+    </div>
+    <script>
+        setTimeout(function(){ window.location="/graph/{{id}}"; }, 5000);
+    </script>
+</body>
+{% endblock content %}
