@@ -51,6 +51,9 @@
                 {% csrf_token %}
                 <label for="formFile" class="form-label">File Name</label>
                 {{ form.name }}
+
+                <label for="description" class="form-label">Project Description</label>
+                {{ form.description }}
                 <!-- Upload File -->
                 <div class="mb-1 mt-2">
                   <label for="formFile" class="form-label">Upload dataset</label>
