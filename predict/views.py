@@ -3,11 +3,14 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 import json
+
 
 from predict import models
 from predict import forms
 from predict.model_predict import predict_data
+
 
 def login_user(request):
     context = {}
@@ -59,9 +62,35 @@ def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
 	return JsonResponse(json.loads(d))
 
+from openpyxl import load_workbook, Workbook
+
 def download_xlsx(request, key_id):
-    d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
-    print(d)
-    return HttpResponse("xlsx")
+    d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
+    data = d["data"]
+    
+    wb = Workbook()
+    sheet = wb.active
+
+    sheet["A1"] = "Datetime"
+    sheet["B1"] = "X1"
+    sheet["C1"] = "X2"
+    sheet["D1"] = "X3"
+    sheet["E1"] = "X4"
+    sheet["F1"] = "Y"
+
+    for row, (datetime, x1, x2, x3, x4, y) in enumerate(data, start=2):
+        sheet [f"A{row}"] = datetime
+        sheet [f"B{row}"] = x1
+        sheet [f"C{row}"] = x2
+        sheet [f"D{row}"] = x3
+        sheet [f"E{row}"] = x4
+        sheet [f"F{row}"] = y
+
+    path = settings.MEDIA_ROOT
+    wb.save(path+"/files/"+str(key_id)+".xlsx")
+
+    return HttpResponse("Successfully downloaded excel file")
+
+    
 
 
