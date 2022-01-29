@@ -57,23 +57,25 @@
               <h5 class="modal-title" id="exampleModalLabel">Upload dataset</h5>
               <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <!-- File Name -->
-              {% csrf_token %} 
-
-              <label for="formFile" class="form-label">File Name</label>
-              {{ form.name }}
-              
-              <!-- Upload File -->
-              <div class="mb-1 mt-2">
-                <label for="formFile" class="form-label">Upload dataset</label>
-                {{ file.filepath }}
+            <form enctype="multipart/form-data" method="POST" action="">
+              <div class="modal-body">
+                <!-- File Name -->
+                {% csrf_token %} 
+                
+                <label for="formFile" class="form-label">File Name</label>
+                {{ form.name }}
+                
+                <!-- Upload File -->
+                <div class="mb-1 mt-2">
+                  <label for="formFile" class="form-label">Upload dataset</label>
+                  {{ form.filepath }}
+                </div>
+                
               </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Upload</button>
-            </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Upload</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

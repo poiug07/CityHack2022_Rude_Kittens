@@ -8,5 +8,5 @@ def predict_data(job_id):
 
     # convert to pandas dataframe
     
-    models.RunningJobs.objects.filter(id=id).delete()
+    models.RunningJobs.objects.filter(datafile_id=job_id).delete()
     return 0

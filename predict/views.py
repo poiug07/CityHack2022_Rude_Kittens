@@ -27,13 +27,10 @@ def logout_user(request):
 	return HttpResponseRedirect("/login")
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, "predict/index.html")
 
 def app(request):
     return render(request, "predict/index.html")
-
-def predict(request):
-	return render(request, "predict/index.html")
 
 def graph(request):
 	return render(request, "predict/graph.html")
@@ -44,15 +41,16 @@ from predict.model_predict import predict_data
 
 def add_xlsx(request):
     form = forms.FileForm(request.POST or None, request.FILES or None)
+    context = {"form": form}
     if form.is_valid():
         file = form.save(commit=False)
         file.user = request.user
         file.save()
         job = models.RunningJobs(datafile = file)
         job.save()
-        predict_data(job.id)
-
-    context = {"form": form}
+        predict_data(job.datafile_id)
+        context["succes"] = True
+        context["form"] = forms.FileForm(None, None)
     
     return render(request, 'predict/upload.html', context)
 
