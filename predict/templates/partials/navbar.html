@@ -4,10 +4,9 @@
   {% if user.is_authenticated %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/app">
           Concatenate
           <img src="{% static '/concat_logo_white.svg' %}" alt="" width="30" height="24" style="margin-top: -5px;">
-          
         </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -16,6 +15,9 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/app">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/add-xlsx">Add Datafile</a>
           </li>
           </ul>
           <form  class="d-flex" style="margin-right: 10px;">

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
-from django.core import serializers
+from django.contrib.auth.decorators import login_required
 import json
 
 from predict import models
@@ -31,15 +31,20 @@ def logout_user(request):
 	return HttpResponseRedirect("/login")
 
 def index(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect("/app")
     return render(request, "predict/index.html")
 
+@login_required(login_url="/login")
 def app(request):
     context = {"datafiles": models.DataFile.objects.all()}
     return render(request, "predict/app.html", context)
 
+@login_required(login_url="/login")
 def graph(request):
 	return render(request, "predict/graph.html")
 
+@login_required(login_url="/login")
 def add_xlsx(request):
     form = forms.FileForm(request.POST or None, request.FILES or None)
     context = {"form": form}
@@ -52,7 +57,6 @@ def add_xlsx(request):
         predict_data(job.datafile_id)
         context["succes"] = True
         context["form"] = forms.FileForm(None, None)
-    
     return render(request, 'predict/upload.html', context)
 
 def get_data(request, key_id):
