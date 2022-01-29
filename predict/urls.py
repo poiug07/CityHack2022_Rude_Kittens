@@ -9,4 +9,5 @@ urlpatterns = [
     path('predict', views.predict, name='predict'),
     path('add-xlsx', views.add_xlsx, name='upload_data'),
     path("login/", views.login_user, name="login"),
+    path("logout/", views.logout_user, name="logout"),
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 
 def login_user(request):
     context = {}
@@ -13,25 +14,35 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                next_page = request.POST["next"]
-                if not next_page:
-                    return HttpResponseRedirect("/courses")
+                next_page = request.POST["next"] or "app"
                 return HttpResponseRedirect(next_page)
         else:
             context["wrong_credentials"] = True
     return render(request, "predict/login.html", context)
 
+def logout_user(request):
+	logout(request)
+	return HttpResponseRedirect("/login")
+
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
-def login(request):
-	return render(request, "login/index.html")
-
 def app(request):
-    return render(request, "app/index.html")
+    return render(request, "predict/index.html")
 
 def predict(request):
 	return render(request, "predict/index.html")
 
+from predict import models
+from predict import forms
+
 def add_xlsx(request):
-    return HttpResponse("Test")
+    form = forms.FileForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        file = form.save(commit=False)
+        file.user = request.user
+        file.save()
+
+    context = {"form": form}
+    
+    return render(request, 'predict/uploadfile.html', context)
