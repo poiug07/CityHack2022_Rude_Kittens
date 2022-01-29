@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 
 def login_user(request):
     context = {}
@@ -13,7 +14,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                next_page = request.POST["next"]
+                next_page = request.POST["next"] or "app"
                 if not next_page:
                     return HttpResponseRedirect("/courses")
                 return HttpResponseRedirect(next_page)
@@ -24,11 +25,8 @@ def login_user(request):
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
-def login(request):
-	return render(request, "login/index.html")
-
 def app(request):
-    return render(request, "app/index.html")
+    return render(request, "predict/index.html")
 
 def predict(request):
 	return render(request, "predict/index.html")

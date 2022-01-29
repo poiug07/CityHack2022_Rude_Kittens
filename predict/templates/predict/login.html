@@ -57,18 +57,21 @@
                       <div class="mb-md-1 mt-md-1 pb-2">
           
                         <h2 class="fw-bold mb-2 mb-4">Sign-in to the system</h2>
-                        
+
+                        <form method="POST">
+                          {% csrf_token %}
+                          <input type="hidden" name="next" value="{{ request.GET.next }}">
+                          <div class="form-outline form-white mb-4">
+                            <input name="username" id="typeEmailX" class="form-control form-control-lg" placeholder="Enter email" />
+                          </div>
           
-                        <div class="form-outline form-white mb-4">
-                          <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Enter email" />
-                        </div>
-          
-                        <div class="form-outline form-white mb-4">
-                          <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Password"/>
-                        </div>
-                  
-                        <button class="btn btn-outline-light btn-lg px-4" type="submit">Login</button>
-          
+                          <div class="form-outline form-white mb-4">
+                            <input name="password" type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Password"/>
+                          </div>
+
+                          <button class="btn btn-outline-light btn-lg px-4" type="submit">Login</button>
+                          
+                        </form>          
                       </div>
           
                     </div>
