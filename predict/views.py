@@ -15,12 +15,14 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 next_page = request.POST["next"] or "app"
-                if not next_page:
-                    return HttpResponseRedirect("/courses")
                 return HttpResponseRedirect(next_page)
         else:
             context["wrong_credentials"] = True
     return render(request, "predict/login.html", context)
+
+def logout_user(request):
+	logout(request)
+	return HttpResponseRedirect("/login")
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
