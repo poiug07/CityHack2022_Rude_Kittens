@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
+from django.core import serializers
+import json
 
 def login_user(request):
     context = {}
@@ -33,6 +35,9 @@ def app(request):
 def predict(request):
 	return render(request, "predict/index.html")
 
+def graph(request):
+	return render(request, "predict/graph.html")
+
 from predict import models
 from predict import forms
 from predict.model_predict import predict_data
@@ -49,4 +54,9 @@ def add_xlsx(request):
 
     context = {"form": form}
     
-    return render(request, 'predict/uploadfile.html', context)
+    return render(request, 'predict/upload.html', context)
+
+def get_data(request, key_id):
+	d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
+	return JsonResponse(d)
+
