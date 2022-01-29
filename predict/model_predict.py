@@ -1,4 +1,3 @@
-import asyncio
 import time
 from predict import models
 from openpyxl import load_workbook
@@ -13,7 +12,9 @@ def predict_data(job_id):
     data = ws.values
     columns = next(data)[0:]
     df = pd.DataFrame(data, columns=columns)
-    print(df)
+    
+    newprediction = models.DataPrediction(datafile_id=d)
+    newprediction.save()
 
     models.RunningJobs.objects.filter(datafile_id=job_id).delete()
     return 0
