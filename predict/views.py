@@ -35,6 +35,7 @@ def predict(request):
 
 from predict import models
 from predict import forms
+from predict.model_predict import predict_data
 
 def add_xlsx(request):
     form = forms.FileForm(request.POST or None, request.FILES or None)
