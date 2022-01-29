@@ -7,5 +7,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('app', views.app, name='app'),
     path('predict', views.predict, name='predict'),
-    path('/add-xlsx', views.upload_xlsx, name='upload_data'),
+    path('add-xlsx', views.upload_xlsx, name='upload_data'),
+    path("login/", views.login_user, name="login"),
 ]
