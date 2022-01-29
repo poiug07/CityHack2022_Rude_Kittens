@@ -37,15 +37,6 @@ def index(request):
 
 @login_required(login_url="/login")
 def app(request):
-    context = {"datafiles": models.DataFile.objects.all()}
-    return render(request, "predict/app.html", context)
-
-@login_required(login_url="/login")
-def graph(request):
-	return render(request, "predict/graph.html")
-
-@login_required(login_url="/login")
-def add_xlsx(request):
     form = forms.FileForm(request.POST or None, request.FILES or None)
     context = {"form": form}
     if form.is_valid():
@@ -57,7 +48,12 @@ def add_xlsx(request):
         predict_data(job.datafile_id)
         context["succes"] = True
         context["form"] = forms.FileForm(None, None)
-    return render(request, 'predict/upload.html', context)
+    context["datafiles"] = models.DataFile.objects.all()
+    return render(request, "predict/app.html", context)
+
+@login_required(login_url="/login")
+def graph(request):
+	return render(request, "predict/graph.html")
 
 def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
