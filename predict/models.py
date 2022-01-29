@@ -15,3 +15,9 @@ class DataPrediction(models.Model):
     datafile_id = models.ForeignKey(DataFile, on_delete=models.CASCADE)
     predictionsJSON = models.TextField()
 
+class RunningJobs(models.Model):
+    datafile = models.OneToOneField(
+        DataFile,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
