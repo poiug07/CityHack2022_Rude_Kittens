@@ -42,6 +42,9 @@ def add_xlsx(request):
         file = form.save(commit=False)
         file.user = request.user
         file.save()
+        job = models.RunningJobs(datafile = file)
+        job.save()
+        predict_data(job.id)
 
     context = {"form": form}
     
