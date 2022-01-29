@@ -35,6 +35,9 @@ def app(request):
 def predict(request):
 	return render(request, "predict/index.html")
 
+def graph(request):
+	return render(request, "predict/graph.html")
+
 from predict import models
 from predict import forms
 
@@ -50,10 +53,9 @@ def add_xlsx(request):
 
     context = {"form": form}
     
-    return render(request, 'predict/uploadfile.html', context)
+    return render(request, 'predict/upload.html', context)
 
 def get_data(request, key_id):
-	d = models.DataPrediction.objects.get(datafile_id=key_id)
-	print(d.predictionsJSON)
-	return JsonResponse(json.loads(d.predictionsJSON))
+	d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
+	return JsonResponse(d)
 
