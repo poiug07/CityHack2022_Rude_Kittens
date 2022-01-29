@@ -1,9 +1,8 @@
 # CityHack22 Project Submission
-## Project: < Your CityHack22 Project Name >
-<img src="https://cityhack22.github.io/assets/img/LOGOS/logo1.png" width="200" alt="project_logo"/>
+## Project: Concatenate
+<img src="./predict/static/concat_logo_color.png" width="200" style="margin-left: 50px" alt="project_logo"/>
 
-< Replace the logo above with Your Project Logo >
-## Team: < Your Team Name >
+## Team: Rude Kittens
 ## Members
 - Assan KOZHIN (Leader)
 - Glenn SALTER
@@ -19,10 +18,10 @@
 3. < Third Feature >
 
 ## Tech used (as many as required)
-1. FastAPI
+1. Django
 2. Bootstrap, Chart.js
-3. Huawei Cloud
-4. < Tech >
+3. 
+4. 
 
 ## Link
 - < 3 minute Youtube Video Link for Project Demo >
