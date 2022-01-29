@@ -33,5 +33,16 @@ def app(request):
 def predict(request):
 	return render(request, "predict/index.html")
 
+from predict import models
+from predict import forms
+
 def add_xlsx(request):
-    return HttpResponse("Test")
+    form = forms.FileForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        file = form.save(commit=False)
+        file.user = request.user
+        file.save()
+
+    context = {"form": form}
+    
+    return render(request, 'predict/uploadfile.html', context)
