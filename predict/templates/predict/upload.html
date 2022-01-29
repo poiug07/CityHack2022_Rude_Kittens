@@ -21,7 +21,7 @@
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
                 Concatenate
-                <img src="concat_logo_white.svg" alt="" width="30" height="24" style="margin-top: -5px;">
+                <img src="/static/concat_logo_white.svg" alt="" width="30" height="24" style="margin-top: -5px;">
                 
               </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,19 +59,20 @@
             </div>
             <div class="modal-body">
               <!-- File Name -->
-              
+              {% csrf_token %} 
+
               <label for="formFile" class="form-label">File Name</label>
-              <input type="text" class="form-control" placeholder="File Name" aria-label="Filename" aria-describedby="addon-wrapping">
+              {{ form.name }}
               
               <!-- Upload File -->
               <div class="mb-1 mt-2">
                 <label for="formFile" class="form-label">Upload dataset</label>
-                <input class="form-control" type="file" id="formFile">
+                {{ file.filepath }}
               </div>
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Upload</button>
+              <button type="submit" class="btn btn-primary">Upload</button>
             </div>
           </div>
         </div>
