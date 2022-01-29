@@ -56,6 +56,6 @@ def add_xlsx(request):
     return render(request, 'predict/upload.html', context)
 
 def get_data(request, key_id):
-	d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
-	return JsonResponse(d)
+	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
+	return JsonResponse(json.loads(d))
 
