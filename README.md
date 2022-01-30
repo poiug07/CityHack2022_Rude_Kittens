@@ -30,7 +30,7 @@ An accurate load forecast enables generators to optimize the mix of generating u
 # 3 Most Impactful Features of the Project
 1. AI Driven Electricity Dermand Forecasting
 Based on uploaded dataset and machine learning model, we can predict electricity demand in the future 2 months.
-[screenshot]
+![image](https://user-images.githubusercontent.com/56122328/151688344-dfefa3c1-a143-4792-b378-7ae60ace5c8b.png)
 
 2.  Past and Forecasted Demand Visualization
 Both past and forecasted data are displayed visually in the platform dashboard.
