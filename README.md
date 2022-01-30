@@ -44,3 +44,8 @@ Forecasted electricity demand can be downloaded in csv or excel format.
 1. Django
 2. Bootstrap, Chart.js
 3. StatsModels
+
+## How to run Demo?
+1. '''Clone repo '''
+2. 
+
