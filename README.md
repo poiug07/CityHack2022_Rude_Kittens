@@ -34,7 +34,7 @@ Based on uploaded dataset and machine learning model, we can predict electricity
 
 2.  Past and Forecasted Demand Visualization
 Both past and forecasted data are displayed visually in the platform dashboard.
-[screenshot]
+![image](https://user-images.githubusercontent.com/56122328/151688325-cf04d48b-14fd-4534-82ed-e2d5f7b9d848.png)
 
 3. Export Forecasted Electricity Demand Data
 Forecasted electricity demand can be downloaded in csv or excel format.
