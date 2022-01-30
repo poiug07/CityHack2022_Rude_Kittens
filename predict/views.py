@@ -63,6 +63,7 @@ def app(request):
         predict_data(job.datafile_id)
         context["succes"] = True
         context["form"] = forms.FileForm(None, None)
+        return HttpResponseRedirect(f"/loading/{job.datafile_id}")
     context["datafiles"] = models.DataFile.objects.all()
     return render(request, "predict/app.html", context)
 
@@ -75,7 +76,7 @@ def graph(request, datafile_id):
 
 def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
-	return JsonResponse(json.loads(d))
+	return HttpResponse(d,  content_type="application/json")
 
 def delete_xlsx(request, id):
     models.DataFile.objects.filter(id=id).delete()
