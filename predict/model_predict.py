@@ -57,7 +57,7 @@ def predict_data(job_id):
     res = inv_diff(res, lag_points["Y"][-1])
     to_predict['Y'] = res
 
-    newprediction.predictionsJSON = to_predict.to_json()
+    newprediction.predictionsJSON = to_predict.to_json(orient='records')
 
     newprediction.save()
 
