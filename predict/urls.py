@@ -10,4 +10,5 @@ urlpatterns = [
     path("logout/", views.logout_user, name="logout"),
     path('get_data/<int:key_id>/', views.get_data, name='key_id'),
     path("graph/<int:datafile_id>", views.graph, name="graph"),
+    path('deletedata/<int:id>', views.delete_xlsx, name="delete")
 ]

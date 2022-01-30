@@ -62,3 +62,6 @@ def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
 	return JsonResponse(json.loads(d))
 
+def delete_xlsx(request, id):
+    models.DataFile.objects.filter(id=id).delete()
+    return HttpResponseRedirect("/app")
