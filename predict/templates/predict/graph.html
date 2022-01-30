@@ -28,19 +28,19 @@
         <div class="d-flex justify-content-center w-auto">
           <div class="row">
             <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X1</h5>
-          
+            <div>
             <canvas id="x1" style="width:100%;max-width:700px"></canvas>
+            </div>
           </div>
-          <!-- <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X3</h5> -->
           <div class="row">
             <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X2</h5>
-            
+            <div>
             <canvas id="x2" style="width:100%;max-width:700px"></canvas>
+            </div>
           </div>
-      </div>
         </div>
-   
-        <script>
+
+          <script>
           url="/get_data/{{id}}"
           const x1 = []
           const x2 = []
@@ -50,78 +50,77 @@
           .then((r) => r.json())
           .then((data) => {
             for (const a of data) {
-              x1.push(a.X1);
-              x2.push(a.X2);
-              y.push(a.Y);
+              y.push((a.Y));
+              x1.push((a.X1))
+              x2.push((a.X2))
             }
+            new Chart("y", {
+            type: "line",
+              data: {
+                labels: Array.from(Array(100).keys()),
+                datasets: [{
+                  fill: false,
+                  lineTension: 0.1,
+                  
+                  borderColor: 'rgb(75, 192, 192)',
+                  data: y,
+                }]
+              },
+              options: {
+                legend: {display: false},
+                scales: {
+                  yAxes: [{ticks: {min: -100000, max:100000}}],
+                }
+              }
+            }
+            );
+            new Chart("x1", {
+            type: "line",
+              data: {
+                labels: Array.from(Array(100).keys()),
+                datasets: [{
+                  fill: false,
+                  lineTension: 0.1,
+                  
+                  borderColor: 'rgb(75, 192, 192)',
+                  data: x1,
+                }]
+              },
+              options: {
+                legend: {display: false},
+                scales: {
+                  yAxes: [{ticks: {min: 0, max:8}}],
+                }
+              }
+            }
+            );
+            new Chart("x2", {
+            type: "line",
+              data: {
+                labels: Array.from(Array(100).keys()),
+                datasets: [{
+                  fill: false,
+                  lineTension: 0.1,
+                  
+                  borderColor: 'rgb(75, 192, 192)',
+                  data: x2,
+                }]
+              },
+              options: {
+                legend: {display: false},
+                scales: {
+                  yAxes: [{ticks: {min: 0, max:20}}],
+                }
+              }
+            });
+            
+
           })
-          .catch((e) => console.log('Booo'));
+          .catch((e) => console.log('Booo'));  
           
-          console.log(x1.slice(1,100))
-          console.log(x2.slice(1,100))
-          console.log(x3.slice(1,100))
-          new Chart("y", {
-            type: "line",
-            data: {
-              labels: [Array.from(Array(10).keys())],
-              datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: y
-              }]
-            },
-            options: {
-              legend: {display: false},
-              scales: {
-                yAxes: [{ticks: {min: -400000, max:40000}}],
-              }
-            }
-          });
-          new Chart("x1", {
-            type: "line",
-            data: {
-              labels: [Array.from(Array(10).keys())],
-              datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: x1
-              }]
-            },
-            options: {
-              legend: {display: false},
-              scales: {
-                yAxes: [{ticks: {min: 0, max:10}}],
-
-              }
-            }
-          });
-          new Chart("x2", {
-            type: "line",
-            data: {
-              labels: [Array.from(Array(10).keys())],
-              datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: x2
-              }]
-            },
-            options: {
-              legend: {display: false},
-              scales: {
-                yAxes: [{ticks: {min: 8, max:20}}],
-              }
-            }
-          });
-          
-          
-
-        </script>         
+        </script>  
+      </div>
+               
       <footer class="py-3 my-4">
           <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="https://github.com/poiug07/CityHack2022_Rude_Kittens" class="nav-link px-2 text-muted" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -130,6 +129,10 @@
           </ul>
           <p class="text-center text-muted">© 2022 Concatenate</p>
       </footer>   
+
+
+
+
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
