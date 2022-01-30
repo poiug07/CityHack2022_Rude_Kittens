@@ -69,11 +69,11 @@ def loading(request, id):
 
 @login_required(login_url="/login")
 def graph(request, datafile_id):
-	return render(request, "predict/graph.html")
+	return render(request, "predict/graph.html", {"id": datafile_id})
 
 def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
-	return JsonResponse(json.loads(d))
+	return HttpResponse(d,  content_type="application/json")
 
 def delete_xlsx(request, id):
     models.DataFile.objects.filter(id=id).delete()
