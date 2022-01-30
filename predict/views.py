@@ -54,20 +54,26 @@ def app(request):
     context["datafiles"] = models.DataFile.objects.all()
     return render(request, "predict/app.html", context)
 
+def loading(request, id):
+    return render(request, "predict/loading.html", {"id": id})
+
 @login_required(login_url="/login")
-def graph(request):
+def graph(request, datafile_id):
 	return render(request, "predict/graph.html")
 
 def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
 	return JsonResponse(json.loads(d))
 
+def delete_xlsx(request, id):
+    models.DataFile.objects.filter(id=id).delete()
+    return HttpResponseRedirect("/app")
 from openpyxl import load_workbook, Workbook
 
 def download_xlsx(request, key_id):
     d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
     data = d["data"]
-    
+
     wb = Workbook()
     sheet = wb.active
 
@@ -89,8 +95,11 @@ def download_xlsx(request, key_id):
     path = settings.MEDIA_ROOT
     wb.save(path+"/files/"+str(key_id)+".xlsx")
 
-    return HttpResponse("Successfully downloaded excel file")
+    response = HttpResponse(wb, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="data.xls"'
 
+
+    return response
     
 
 
