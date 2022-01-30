@@ -27,3 +27,34 @@ class FileForm(forms.ModelForm):
     class Meta:
         model = DataFile
         fields = ["name", "description", "filepath"]
+
+class AccessRequestForm(forms.ModelForm):
+    companyName = forms.CharField(widget=forms.TextInput(
+        attrs={
+            "class":"form-control",
+            "placeholder": "File Name",
+            "aria-label": "Filename",
+            "aria-describedby": "addon-wrapping"
+        }
+    ))
+
+    representativeName = forms.CharField(widget=forms.TextInput(
+        attrs={
+            "class":"form-control",
+            "placeholder": "Some project description...",
+            "aria-label": "descriptio",
+            "aria-describedby": "addon-wrapping"
+        }
+    ))
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={
+            "class":"form-control",
+            "placeholder": "Some project description...",
+            "aria-label": "descriptio",
+            "aria-describedby": "addon-wrapping"
+        }
+    ))
+
+    class Meta:
+        model = DataFile
+        fields = ["name", "representativeName", "email"]

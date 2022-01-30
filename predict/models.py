@@ -22,3 +22,8 @@ class RunningJobs(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
+
+class AccessRequest(models.Model):
+    companyName = models.CharField(max_length=300)
+    representativeName = models.CharField(max_length=300)
+    email = models.EmailField(max_length=300) 
