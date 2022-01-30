@@ -48,7 +48,28 @@ Forecasted electricity demand can be downloaded in csv or excel format.
 ## How to run Demo?
 1. Clone repo
 ```
-git clone 
+git clone https://github.com/poiug07/CityHack2022_Rude_Kittens.git
 ```
+2. Go to Folder /CityHack2022_Rude_Kittens/
+```
+cd cd CityHack2022_Rude_Kittens/
+```
+3. Create your virtual enviroment inside /CityHack2022_Rude_Kittens/
+```
+venv env
+```
+4. Run your enviroment
+```
+source env/bin/activate
+```
+5. Install required libraries
+```
+pip install -r requirements.txt 
+```
+6. Run server
+```
+python manage.py runserver
+```
+
 
 
