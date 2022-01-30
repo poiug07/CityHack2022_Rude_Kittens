@@ -38,7 +38,7 @@ Both past and forecasted data are displayed visually in the platform dashboard.
 
 3. Export Forecasted Electricity Demand Data
 Forecasted electricity demand can be downloaded in csv or excel format.
-[screenshot]
+![image](https://user-images.githubusercontent.com/56122328/151688306-86ca768f-4773-4c88-86e6-988953a0bc4f.png)
 
 ## Tech used (as many as required)
 1. Django
