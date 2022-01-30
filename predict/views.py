@@ -72,11 +72,11 @@ def loading(request, id):
 
 @login_required(login_url="/login")
 def graph(request, datafile_id):
-	return render(request, "predict/graph.html")
+	return render(request, "predict/graph.html", {"id": datafile_id})
 
 def get_data(request, key_id):
 	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
-	return JsonResponse(json.loads(d))
+	return HttpResponse(d,  content_type="application/json")
 
 def delete_xlsx(request, id):
     models.DataFile.objects.filter(id=id).delete()
@@ -85,7 +85,7 @@ from openpyxl import load_workbook, Workbook
 
 def download_xlsx(request, key_id):
     d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
-    data = d["data"]
+    data = d
 
     wb = Workbook()
     sheet = wb.active
@@ -95,15 +95,15 @@ def download_xlsx(request, key_id):
     sheet["C1"] = "X2"
     sheet["D1"] = "X3"
     sheet["E1"] = "X4"
-    sheet["F1"] = "Y"
 
-    for row, (datetime, x1, x2, x3, x4, y) in enumerate(data, start=2):
+
+    for row, (datetime, x1, x2, x3, x4) in enumerate(data, start=2):
         sheet [f"A{row}"] = datetime
         sheet [f"B{row}"] = x1
         sheet [f"C{row}"] = x2
         sheet [f"D{row}"] = x3
         sheet [f"E{row}"] = x4
-        sheet [f"F{row}"] = y
+
 
     path = settings.MEDIA_ROOT
     wb.save(path+"/files/"+str(key_id)+".xlsx")
