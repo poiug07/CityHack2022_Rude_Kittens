@@ -9,7 +9,6 @@ import json
 
 from predict import models
 from predict import forms
-from predict.model_predict import predict_data
 
 
 def login_user(request):
@@ -58,12 +57,10 @@ def app(request):
         file = form.save(commit=False)
         file.user = request.user
         file.save()
-        job = models.RunningJobs(datafile = file)
-        job.save()
-        predict_data(job.datafile_id)
+        # predict_data(job.datafile_id)
         context["succes"] = True
         context["form"] = forms.FileForm(None, None)
-        return HttpResponseRedirect(f"/loading/{job.datafile_id}")
+        return HttpResponseRedirect(f"/loading/{file.id}")
     context["datafiles"] = models.DataFile.objects.all()
     return render(request, "predict/app.html", context)
 
