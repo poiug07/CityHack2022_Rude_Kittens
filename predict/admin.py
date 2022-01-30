@@ -15,3 +15,5 @@ class DataPredictionAdmin(admin.ModelAdmin):
             },
         ),
     )
+
+admin.site.register(models.AccessRequest)

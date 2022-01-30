@@ -36,7 +36,17 @@ def logout_user(request):
 def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect("/app")
-    return render(request, "predict/index.html")
+    form = forms.AccessRequestForm(request.POST or None, request.FILES or None)
+    context = {"form": form}
+    if request.POST:
+        print("post")
+        if form.is_valid():
+            print("is here")
+            form.save()
+            context["saved"] = True
+        else:
+            context["error"] = True
+    return render(request, "predict/index.html", context)
 
 @login_required(login_url="/login")
 def app(request):
@@ -100,6 +110,3 @@ def download_xlsx(request, key_id):
 
 
     return response
-    
-
-

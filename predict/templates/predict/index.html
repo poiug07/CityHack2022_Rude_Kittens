@@ -40,8 +40,32 @@
         </div>
       </div>
     </div>
-  </div>
 
+    <div class="p-5">
+      <form method="post" action="">
+        {% if error %}
+        <p>Sorry error occured, try later or contact us directly.</p>
+        {% elif saved %}
+        <p>Your data is saved we will contact you later.</p>
+        {% endif %}
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="form.companyName.id_for_label" class="form-label">Company Name</label>
+          {{ form.companyName }}
+        </div>
+        <div class="mb-3">
+          <label for="form.representativeName.id_for_label" class="form-label">Representative Name</label>
+          {{ form.representativeName }}
+        </div>
+        <div class="mb-3">
+          <label for="form.email.id_for_label" class="form-label">Email</label>
+          {{ form.email }}
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Access Request</button>
+      </form>
+      </div>
+  </div>
 
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
