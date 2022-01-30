@@ -46,10 +46,9 @@ Forecasted electricity demand can be downloaded in csv or excel format.
 3. StatsModels
 
 ## How to run Demo?
+1. Clone repo
 ```
-function test() {
-  console.log("notice the blank line before this function?");
-}
+git clone 
 ```
 
 
