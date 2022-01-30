@@ -16,7 +16,13 @@ Accurate electricity demand forecasting is important to power companies for both
 
 ## 3 Most Impactful Features of the Project (with Screenshot and Short Description (150 words))
 1. AI Driven Electricity Dermand Forecasting
-2. Past and Forecasted Demand Visualization
+
+
+2.  Past and Forecasted Demand Visualization
+
+
+3. Export Forecast Electricity Demand Data
+
 
 ## Tech used (as many as required)
 1. Django
