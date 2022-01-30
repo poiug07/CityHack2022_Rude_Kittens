@@ -46,6 +46,10 @@ Forecasted electricity demand can be downloaded in csv or excel format.
 3. StatsModels
 
 ## How to run Demo?
-1. '''Clone repo '''
+1. ```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 2. 
 
