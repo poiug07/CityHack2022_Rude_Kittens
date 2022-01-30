@@ -19,29 +19,27 @@
     <body>
       {% include "partials/navbar.html" %}
     
-     
-      <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X1</h5>
       <div>
-        <div class="row justify-content-center">
-          <canvas id="x1" style="width:100%;max-width:600px"></canvas>
-        </div>
-        <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X2</h5>
-        <div class="row justify-content-center">
-          <canvas id="x2" style="width:100%;max-width:600px"></canvas>
-        </div>
-        <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X3</h5>
-        <div class="row justify-content-center">
-            <canvas id="x3" style="width:100%;max-width:600px"></canvas>
-        </div>
-        <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X4</h5>
-        <div class="row justify-content-center">
-            <canvas id="x4" style="width:100%;max-width:600px"></canvas>
-        </div>
         <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">Y</h5>
         <div class="row justify-content-center">
-            <canvas id="y" style="width:100%;max-width:600px"></canvas>
+          <canvas id="y" style="width:100%;max-width:700px"></canvas>
         </div>
+        
+        <div class="d-flex justify-content-center w-auto">
+          <div class="row">
+            <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X1</h5>
+          
+            <canvas id="x1" style="width:100%;max-width:700px"></canvas>
+          </div>
+          <!-- <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X3</h5> -->
+          <div class="row">
+            <h5 class="d-flex justify-content-center" style="padding-top: 5rem;">X2</h5>
+            
+            <canvas id="x2" style="width:100%;max-width:700px"></canvas>
+          </div>
       </div>
+        </div>
+   
         <script>
           var xValues = [50,60,70,80,90,100,110,120,130,140,150];
           var yValues = [7,8,8,9,9,9,10,11,14,14,15];
@@ -84,44 +82,7 @@
               }
             }
           });
-          new Chart("x3", {
-            type: "line",
-            data: {
-              labels: xValues,
-              datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: yValues
-              }]
-            },
-            options: {
-              legend: {display: false},
-              scales: {
-                yAxes: [{ticks: {min: 6, max:16}}],
-              }
-            }
-          });
-          new Chart("x4", {
-            type: "line",
-            data: {
-              labels: xValues,
-              datasets: [{
-                fill: false,
-                lineTension: 0,
-                backgroundColor: "rgba(0,0,255,1.0)",
-                borderColor: "rgba(0,0,255,0.1)",
-                data: yValues
-              }]
-            },
-            options: {
-              legend: {display: false},
-              scales: {
-                yAxes: [{ticks: {min: 6, max:16}}],
-              }
-            }
-          });
+          
           new Chart("y", {
             type: "line",
             data: {
