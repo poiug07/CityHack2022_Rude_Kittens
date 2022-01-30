@@ -63,6 +63,7 @@ def app(request):
         predict_data(job.datafile_id)
         context["succes"] = True
         context["form"] = forms.FileForm(None, None)
+        return HttpResponseRedirect(f"/loading/{job.datafile_id}")
     context["datafiles"] = models.DataFile.objects.all()
     return render(request, "predict/app.html", context)
 
