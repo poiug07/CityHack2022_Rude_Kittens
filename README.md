@@ -11,17 +11,17 @@
 - Nikita CHE
 
 ## Description of the Project (300 words)
+Web platform for electricity companies to accurately forecast demand powered by AI.
+Accurate electricity demand forecasting is important to power companies for both meeting customer demand and minimizing costs by avoiding overgeneration. Precise load forecasting can result in significant cost savings and profits.
 
 ## 3 Most Impactful Features of the Project (with Screenshot and Short Description (150 words))
-1. < First Feature >
-2. < Second Feature >
-3. < Third Feature >
+1. AI Driven Electricity Dermand Forecasting
+2. Past and Forecasted Demand Visualization
 
 ## Tech used (as many as required)
 1. Django
 2. Bootstrap, Chart.js
-3. 
-4. 
+3. StatsModels
 
 ## Link
 - < 3 minute Youtube Video Link for Project Demo >
