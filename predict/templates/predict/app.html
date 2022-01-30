@@ -55,8 +55,18 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ o.name }}</h5>
                             <p class="card-text">{{ o.description }}</p>
-                            <a href="/graph/{{o.id}}" class="btn btn-primary">Open Project</a>
-                            <a href="/download-xlsx/{{o.id}}" class="btn btn-primary" >Download Project</a>
+                            <div class="d-flex justify-content-between">
+                                <a href="/graph/{{o.id}}" class="btn btn-primary">Open Project</a>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{o.id}}" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Options
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{o.id}}">
+                                        <li><a class="dropdown-item" href="/download-xlsx/{{o.id}}">Download</a></li>
+                                        <li><a class="dropdown-item" href="/deletedata/{{o.id}}">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
