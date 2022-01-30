@@ -75,12 +75,14 @@ def graph(request, datafile_id):
 	return render(request, "predict/graph.html", {"id": datafile_id})
 
 def get_data(request, key_id):
-	d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
-	return HttpResponse(d,  content_type="application/json")
+    d = models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON
+    return HttpResponse(d, content_type="application/json")
+
 
 def delete_xlsx(request, id):
     models.DataFile.objects.filter(id=id).delete()
     return HttpResponseRedirect("/app")
+    
 from openpyxl import load_workbook, Workbook
 
 def download_xlsx(request, key_id):
