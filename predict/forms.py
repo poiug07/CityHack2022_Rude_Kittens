@@ -1,5 +1,5 @@
 from django import forms
-from predict.models import DataFile
+from predict.models import DataFile, AccessRequest
 
 class FileForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(
@@ -56,5 +56,5 @@ class AccessRequestForm(forms.ModelForm):
     ))
 
     class Meta:
-        model = DataFile
-        fields = ["name", "representativeName", "email"]
+        model = AccessRequest
+        fields = ["companyName", "representativeName", "email"]

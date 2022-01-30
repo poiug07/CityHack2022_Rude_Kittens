@@ -36,15 +36,17 @@ def logout_user(request):
 def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect("/app")
-    form = forms.AccessRequestForm(request.POST or None, request.FILES or None)
+    print(request.POST)
+    form = forms.AccessRequestForm(request.POST or None)
     context = {"form": form}
+    print(form)
     if request.POST:
-        print("post")
         if form.is_valid():
             print("is here")
             form.save()
             context["saved"] = True
         else:
+            print(form.errors)
             context["error"] = True
     return render(request, "predict/index.html", context)
 

@@ -44,21 +44,25 @@
     <div class="p-5">
       <form method="post" action="">
         {% if error %}
-        <p>Sorry error occured, try later or contact us directly.</p>
+        <div class="alert alert-danger" role="alert">
+          Sorry error occured, try later or contact us directly.
+        </div>
         {% elif saved %}
-        <p>Your data is saved we will contact you later.</p>
+        <div class="alert alert-success" role="alert">
+          Your data is saved we will contact you later.
+        </div>
         {% endif %}
         {% csrf_token %}
         <div class="mb-3">
-          <label for="form.companyName.id_for_label" class="form-label">Company Name</label>
+          <label for="{{form.companyName.id_for_label}}" class="form-label">Company Name</label>
           {{ form.companyName }}
         </div>
         <div class="mb-3">
-          <label for="form.representativeName.id_for_label" class="form-label">Representative Name</label>
+          <label for="{{form.representativeName.id_for_label}}" class="form-label">Representative Name</label>
           {{ form.representativeName }}
         </div>
         <div class="mb-3">
-          <label for="form.email.id_for_label" class="form-label">Email</label>
+          <label for="{{form.email.id_for_label}}" class="form-label">Email</label>
           {{ form.email }}
           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
