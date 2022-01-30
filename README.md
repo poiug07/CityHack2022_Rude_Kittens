@@ -45,6 +45,9 @@ Forecasted electricity demand can be downloaded in csv or excel format.
 2. Bootstrap, Chart.js
 3. StatsModels
 
+## Link
+- [demo video](https://drive.google.com/file/d/18l23kmwArCwmh-p5iqQl8P1euS7X1KHk/view?usp=sharing)
+
 ## How to run Demo?
 1. Clone repo
 ```
