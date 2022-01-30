@@ -70,7 +70,7 @@ from openpyxl import load_workbook, Workbook
 def download_xlsx(request, key_id):
     d = json.loads(models.DataPrediction.objects.get(datafile_id=key_id).predictionsJSON)
     data = d["data"]
-    
+
     wb = Workbook()
     sheet = wb.active
 
@@ -92,8 +92,11 @@ def download_xlsx(request, key_id):
     path = settings.MEDIA_ROOT
     wb.save(path+"/files/"+str(key_id)+".xlsx")
 
-    return HttpResponse("Successfully downloaded excel file")
+    response = HttpResponse(wb, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="data.xls"'
 
+
+    return response
     
 
 
