@@ -59,7 +59,7 @@ git clone https://github.com/poiug07/CityHack2022_Rude_Kittens.git
 ```
 2. Go to Folder /CityHack2022_Rude_Kittens/
 ```
-cd cd CityHack2022_Rude_Kittens/
+cd CityHack2022_Rude_Kittens/
 ```
 3. Create your virtual enviroment inside /CityHack2022_Rude_Kittens/
 ```
